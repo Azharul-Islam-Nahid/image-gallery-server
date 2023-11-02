@@ -38,11 +38,12 @@ async function run() {
       res.send(images);
     });
 
-    app.post("/image", async (req, res) => {
-      const service = req.body;
-      const result = await imageCollection.insertOne(service);
+    app.post('/addImage', async (req, res) => {
+      const image = req.body;
+      const result = await imageCollection.insertOne(image);
       res.send(result);
-    });
+    })
+
 
     app.delete('/image/:id', async (req, res) => {
       const id = req.params.id;
